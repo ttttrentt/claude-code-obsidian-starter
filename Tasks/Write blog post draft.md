@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Launch YouTube Channel]]"
+status: in-progress
+tags:
+  - task
+project: "[[Q1 Content Plan]]"
 context: computer
-due: 2025-12-18
+due: 2026-01-14
 ---
 
 # Write blog post draft

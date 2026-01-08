@@ -1,62 +1,60 @@
 ---
 name: query
-description: Query Obsidian notes using dataview. Use to show goals, recent notes, or create goals. For TASKS, use the tasknotes skill instead.
+description: Query data from this vault. USE WHEN user asks about projects, clients, tasks, daily notes. Use grep to extract frontmatter - do NOT read full files.
 ---
 
-# Obsidian Query
+# Query Skill
 
-Query notes in Obsidian using dataview (via headless-bases plugin).
+## IMPORTANT
 
-## Prerequisites
+**Use `grep` to extract frontmatter. Do NOT read full files.**
 
-- Obsidian must be running with headless-bases plugin
-- Server at http://127.0.0.1:27124
-
-## Quick Examples
+## Projects
 
 ```bash
-# Check connection
-{baseDir}/query.py status
-
-# Query goals
-{baseDir}/query.py goals
-
-# Query with filter
-{baseDir}/query.py goals --where "Priority=High"
-
-# Recent files
-{baseDir}/query.py recent 5
-
-# Create a goal
-{baseDir}/query.py create goals "Learn Rust" --fields "Status=In progress,Priority=High"
+grep -h "^status:\|^priority:\|^deadline:" Projects/*.md
 ```
 
-## Commands
-
-### Status
+Or per-file with filename:
 ```bash
-{baseDir}/query.py status
+grep -l "" Projects/*.md | while read f; do
+  echo "=== $(basename "$f" .md) ==="
+  grep "^status:\|^priority:\|^deadline:" "$f"
+done
 ```
 
-### Query Collections
+**Present as table:**
+| Project | Status | Priority | Deadline |
+|---------|--------|----------|----------|
+
+## Clients
+
 ```bash
-{baseDir}/query.py goals                           # All active goals
-{baseDir}/query.py goals --where "Priority=High"   # Filter
-{baseDir}/query.py goals --view all                # Different view
-{baseDir}/query.py goals --json                    # JSON output
+grep -l "" Clients/*.md | while read f; do
+  echo "=== $(basename "$f" .md) ==="
+  grep "^stage:\|^company:\|^next_action:" "$f"
+done
 ```
 
-### Recent Files
+**Present as table:**
+| Client | Company | Stage | Next Action |
+|--------|---------|-------|-------------|
+
+## Tasks
+
 ```bash
-{baseDir}/query.py recent [count]
-{baseDir}/query.py recent 10
+curl -s "http://127.0.0.1:8090/api/tasks"
 ```
 
-### Create Goal
+## Daily Notes
+
 ```bash
-{baseDir}/query.py create goals "Goal Title" --fields "Status=In progress,Priority=High"
+ls -t Daily/*.md | head -5 | while read f; do
+  echo "=== $(basename "$f" .md) ==="
+  grep "^mood:\|^energy:\|^sleep_quality:" "$f"
+done
 ```
 
-## Note
+## Output
 
-For **tasks**, use the `tasknotes` skill instead - it has full task management (create, update, delete, list).
+Always present results as markdown table.

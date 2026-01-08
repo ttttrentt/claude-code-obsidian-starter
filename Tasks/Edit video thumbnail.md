@@ -1,8 +1,10 @@
 ---
-status: completed
-project: "[[Launch YouTube Channel]]"
+status: done
+tags:
+  - task
+project: "[[Q1 Content Plan]]"
 context: computer
-due: 2025-12-17
+due: 2026-01-06
 ---
 
 # Edit video thumbnail

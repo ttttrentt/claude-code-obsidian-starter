@@ -1,8 +1,10 @@
 ---
-status: completed
-project: "[[Run Marathon]]"
+status: done
+tags:
+  - task
+project: "[[Fitness Challenge]]"
 context: errands
-due: 2025-12-10
+due: 2026-01-05
 ---
 
 # Buy running shoes

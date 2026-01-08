@@ -13,7 +13,7 @@
 1. Clone: `git clone https://github.com/ArtemXTech/claude-code-obsidian-starter.git`
 2. Open in Obsidian (trust plugins when prompted)
 3. Run: `cd claude-code-obsidian-starter && claude`
-4. Try: `"Show my goals"` or `"Create a task: Call mom tomorrow"`
+4. Try: `/setup-memory` to build your CLAUDE.md
 
 ---
 
@@ -26,12 +26,13 @@
 
 | Skill | Does |
 |-------|------|
-| 🔍 query | Read goals, tasks, notes |
+| 🔍 query | Find projects, clients, tasks |
 | ✅ tasknotes | Create & manage tasks |
-| ☀️ morning-routine | Daily planning workflow |
+| ☀️ review | Morning, evening, weekly routines |
+| 👤 client | Client follow-ups & emails |
 
 ---
 
-Made with <3 for the Obsidian community
+Made with ❤️ for the Obsidian community
 
 By [Artem Zhutov](https://x.com/ArtemXTech)

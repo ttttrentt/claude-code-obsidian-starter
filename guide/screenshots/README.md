@@ -10,7 +10,7 @@ Only 3 screenshots. Take them in order.
 
 **How to take it:**
 1. Open Obsidian with claude-code-obsidian-starter vault
-2. Make sure sidebar is visible showing: Tasks/, Goals/, Daily/
+2. Make sure sidebar is visible showing: Projects/, Clients/, Tasks/, Daily/
 3. Have a file open (maybe a Goal or Task)
 4. Screenshot the whole Obsidian window
 

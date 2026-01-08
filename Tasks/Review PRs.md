@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Build Side Project]]"
+status: open
+tags:
+  - task
+project: "[[Website Redesign]]"
 context: computer
-due: 2025-12-14
+due: 2026-01-10
 ---
 
 # Review PRs

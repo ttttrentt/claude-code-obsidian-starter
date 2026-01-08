@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Launch YouTube Channel]]"
+status: open
+tags:
+  - task
+project: "[[Q1 Content Plan]]"
 context: home
-due: 2025-12-15
+due: 2026-01-12
 ---
 
 # Record video intro

@@ -4,19 +4,25 @@
 
 ```
 .
-├── Daily/          # Daily notes
+├── Projects/       # Active projects
+├── Clients/        # Client profiles
 ├── Tasks/          # Task files (managed by TaskNotes)
-├── Goals/          # Goal tracking
-├── Templates/      # Note templates
-│   └── Bases/      # Obsidian Bases (structured data views)
+├── Daily/          # Daily notes
+├── Bases/          # Obsidian Bases (structured data views)
 └── .claude/skills/ # Claude Code skills
-    ├── tasknotes/  # Task management
-    ├── obases/     # Query Obsidian Bases
-    └── morning-routine/  # Daily routine
+    ├── review/     # Morning, evening, weekly routines
+    ├── client/     # Client follow-ups
+    ├── query/      # Query vault data
+    └── tasknotes/  # Task management
 ```
 
-## Conventions
+## Quick Start
 
-- Tasks go in `Tasks/` folder
-- Daily notes go in `Daily/` folder with format `YYYY-MM-DD.md`
-- Goals go in `Goals/` folder
+- `/setup-memory` - Build your personalized CLAUDE.md
+- `"morning routine"` - Start your day
+- `"get my projects"` - See all projects
+- `"who needs follow-up?"` - Check clients
+
+## Output Preferences
+
+When querying data, **present as markdown table**. Use grep to extract frontmatter - don't read full files.

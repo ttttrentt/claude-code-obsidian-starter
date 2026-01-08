@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Run Marathon]]"
+status: open
+tags:
+  - task
+project: "[[Fitness Challenge]]"
 context: phone
-due: 2025-12-14
+due: 2026-01-11
 ---
 
 # Plan long run route

@@ -2955,6 +2955,18 @@
     border-color: color-mix(in srgb, var(--tn-color-error) 70%, transparent);
 }
 
+.tasknotes-plugin .task-card__metadata-pill--google-calendar {
+    background: transparent;
+    color: #4285F4;
+    border-color: color-mix(in srgb, #4285F4 70%, transparent);
+    padding: 0 6px;
+}
+
+.tasknotes-plugin .task-card__metadata-pill--google-calendar svg {
+    width: 12px;
+    height: 12px;
+}
+
 
 .tasknotes-plugin .task-card__tag {
     background: var(--tn-bg-secondary);
@@ -13254,6 +13266,18 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     z-index: 1;
 }
 
+/* Timegrid (week/day view) today column - use subtle accent instead of FullCalendar default yellow */
+/* Must match FullCalendar's specificity: .fc .fc-timegrid-col.fc-day-today */
+.advanced-calendar-view .fc .fc-timegrid-col.fc-day-today {
+    background-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
+}
+
+/* Override FullCalendar's today background CSS variable for consistent theming */
+/* Scoped to .fc inside our view to ensure the variable is properly inherited */
+.advanced-calendar-view .fc {
+    --fc-today-bg-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
+}
+
 /* Header cells */
 .advanced-calendar-view .fc-col-header-cell {
     background: var(--background-primary) !important;
@@ -13478,7 +13502,7 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     display: none;
 }
 
-.hide-today-highlight .fc-timegrid-col.fc-day-today {
+.hide-today-highlight .fc .fc-timegrid-col.fc-day-today {
     background: inherit !important;
     border: none !important;
 }
@@ -14085,6 +14109,12 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     box-shadow: var(--tn-shadow-medium);
 }
 
+@media (pointer: coarse) {
+    .tasknotes-plugin .kanban-view__column-header--dragging {
+        pointer-events: none;
+    }
+}
+
 /* Drag Handle */
 .tasknotes-plugin .kanban-view__drag-handle {
     color: var(--tn-text-muted);
@@ -14110,6 +14140,18 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     color: var(--tn-text-normal);
     line-height: 1.2;
     margin: 0;
+}
+
+.tasknotes-plugin .kanban-view__column-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.tasknotes-plugin .kanban-view__column-icon svg {
+    width: 12px;
+    height: 12px;
 }
 
 .tasknotes-plugin .kanban-view__column-count {
@@ -14265,18 +14307,63 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
         padding: var(--tn-spacing-xs);
         gap: var(--tn-spacing-xs);
     }
-    
+
     .tasknotes-plugin .kanban-view__column-header {
         padding: var(--tn-spacing-xs) var(--tn-spacing-sm);
     }
-    
+
     .tasknotes-plugin .kanban-view__column-body {
         padding: var(--tn-spacing-xs);
     }
-    
+
     .tasknotes-plugin .kanban-view__new-task-button {
         font-size: var(--tn-font-size-xs);
         padding: 0 var(--tn-spacing-md);
+    }
+}
+
+/* Touch drag support */
+.tasknotes-plugin .kanban-view__card-wrapper[draggable="true"],
+.tasknotes-plugin .kanban-view__column-header[draggable="true"],
+.tasknotes-plugin .kanban-view__column-header-cell[draggable="true"] {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.tasknotes-plugin .kanban-view__touch-ghost {
+    border-radius: var(--tn-radius-md);
+    background: var(--tn-bg-primary);
+    border: 2px solid var(--tn-interactive-accent);
+}
+
+.tasknotes-plugin .kanban-view__card--dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+}
+
+@media (pointer: coarse) {
+    .tasknotes-plugin .kanban-view__card--dragging {
+        pointer-events: none;
+    }
+}
+
+@media (pointer: coarse) {
+    .tasknotes-plugin .kanban-view__column--dragover,
+    .tasknotes-plugin .kanban-view__swimlane-column--dragover {
+        transform: scale(1.02);
+        border-color: var(--tn-interactive-accent);
+        border-width: 2px;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tasknotes-plugin .kanban-view__column-header--dragover,
+    .tasknotes-plugin .kanban-view__column-header-cell--dragover {
+        transform: scale(1.02);
+        border-color: var(--tn-interactive-accent);
+        background: var(--tn-bg-secondary);
+        transition: transform 0.15s ease, border-color 0.15s ease;
     }
 }
 
@@ -15228,15 +15315,18 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: transparent;
+    background: var(--background-secondary);
     color: var(--tn-text-normal);
-    border: none;
+    border: 1px solid var(--background-modifier-border);
     box-shadow: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .tasknotes-plugin .pomodoro-view__time-adjust-button:hover {
     background: var(--tn-interactive-hover);
-    border: none;
+    border-color: var(--tn-interactive-accent);
     box-shadow: none;
 }
 
@@ -18127,6 +18217,108 @@ select.tasknotes-settings__card-input {
 }
 
 /* ================================================
+   INTEGRATIONS TAB - OAUTH SETUP & CALENDAR CARDS
+   ================================================ */
+
+/* OAuth Setup Info Box */
+.tasknotes-oauth-setup-guide {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: 6px;
+    border-left: 3px solid var(--interactive-accent);
+    margin-bottom: 16px;
+}
+
+.tasknotes-oauth-setup-guide a {
+    font-size: 0.9em;
+    color: var(--interactive-accent);
+    margin-top: 8px;
+    display: inline-block;
+}
+
+/* Calendar connection info (connected/last refreshed) */
+.tasknotes-calendar-info {
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+
+.tasknotes-calendar-help {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.tasknotes-credential-note {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Webhook events display */
+.tasknotes-webhook-events {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.tasknotes-webhook-events--empty {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Webhook transform file display */
+.tasknotes-transform-file {
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--background-modifier-form-field);
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.tasknotes-transform-file--empty {
+    font-family: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Auto export status container */
+.tasknotes-auto-export-status {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--background-secondary);
+    border-radius: 4px;
+}
+
+.tasknotes-auto-export-status__title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.tasknotes-auto-export-status__content {
+    font-size: 0.9em;
+    opacity: 0.8;
+    white-space: pre-line;
+}
+
+.tasknotes-auto-export-status__error {
+    font-weight: 500;
+    color: var(--text-warning);
+}
+
+/* ================================================
    ACCESSIBILITY & REDUCED MOTION
    ================================================ */
 
@@ -18134,7 +18326,7 @@ select.tasknotes-settings__card-input {
     .tasknotes-plugin .settings-view__tab-content--active {
         animation: none;
     }
-    
+
     .tasknotes-settings__card,
     .tasknotes-settings__card-drag-handle {
         transition: none;
@@ -19116,6 +19308,9 @@ select.tasknotes-settings__card-input {
     font-weight: var(--tn-font-weight-medium);
     color: var(--tn-text-normal);
     font-size: var(--tn-font-size-md);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Swimlane task count */
@@ -19149,6 +19344,12 @@ select.tasknotes-settings__card-input {
     opacity: 0.5;
     transform: rotate(2deg);
     box-shadow: var(--tn-shadow-medium);
+}
+
+@media (pointer: coarse) {
+    .kanban-view__column-header-cell--dragging {
+        pointer-events: none;
+    }
 }
 
 .kanban-view__column-header-cell .kanban-view__column-title {

@@ -81,7 +81,7 @@
       #text(size: 11pt)[
         #text(fill: accent)[1.] Talk to your Obsidian vault in plain English \
         #text(fill: accent)[2.] Create tasks in 3 seconds (not 2 minutes) \
-        #text(fill: accent)[3.] Query your goals, notes, and data instantly \
+        #text(fill: accent)[3.] Query your projects, notes, and data instantly \
         #text(fill: accent)[4.] Try the morning routine that plans your day
       ]
     ]
@@ -198,7 +198,7 @@
       )[
         #text(size: 10pt, weight: "bold")[🔍 query]
         #v(0.3cm)
-        #text(size: 9pt, fill: muted)[Read goals, notes, data]
+        #text(size: 9pt, fill: muted)[Read projects, notes, data]
       ]
     ],
     [
@@ -218,7 +218,7 @@
         inset: 12pt,
         radius: 4pt,
       )[
-        #text(size: 10pt, weight: "bold")[☀️ morning-routine]
+        #text(size: 10pt, weight: "bold")[☀️ review]
         #v(0.3cm)
         #text(size: 9pt, fill: muted)[Daily workflow]
       ]
@@ -252,7 +252,7 @@ Open Obsidian and select this folder as a vault. When prompted, click *Trust aut
 
 The vault comes pre-configured with:
 - *Tasks* — Your tasks (managed by TaskNotes)
-- *Goals* — Goal tracking with structured data
+- *Projects* — Goal tracking with structured data
 - *Daily* — Daily notes and check-ins
 - *.claude/skills* — Claude Code skills that make this work
 
@@ -264,7 +264,7 @@ The vault comes pre-configured with:
   radius: 6pt,
 )[
   #text(size: 10pt)[
-    *No setup needed.* The plugins (Dataview, TaskNotes, headless-bases) are pre-installed and configured. Just open and go.
+    *No setup needed.* The plugins (TaskNotes) are pre-installed and configured. Just open and go.
   ]
 ]
 
@@ -343,7 +343,7 @@ Type this in Claude Code:
   radius: 4pt,
 )[
   #text(fill: code-fg, font: "Menlo", size: 11pt)[
-    Show my goals
+    Show my projects
   ]
 ]
 
@@ -353,15 +353,15 @@ Claude queries your vault and returns a formatted table:
 
 #v(0.3cm)
 
-#framed-image("screenshots/02-query-goals-terminal.png", caption: "Claude returns your goals in a formatted table")
+#framed-image("screenshots/02-query-projects-terminal.png", caption: "Claude returns your projects in a formatted table")
 
 #v(0.8cm)
 
-Now look at the *same data* in Obsidian (Templates/Bases/Goals):
+Now look at the *same data* in Obsidian (Bases/Projects):
 
 #v(0.3cm)
 
-#framed-image("screenshots/03-query-goals-obsidian.png", caption: "Same data in Obsidian — proof it's real")
+#framed-image("screenshots/03-query-projects-obsidian.png", caption: "Same data in Obsidian — proof it's real")
 
 #v(0.5cm)
 
@@ -373,7 +373,7 @@ Now look at the *same data* in Obsidian (Templates/Bases/Goals):
     width: 90%,
   )[
     #text(size: 10pt)[
-      *Same 6 goals. Same data.* Claude reads directly from your Obsidian vault — nothing is made up or cached.
+      *Same 6 projects. Same data.* Claude reads directly from your Obsidian vault — nothing is made up or cached.
     ]
   ]
 ]
@@ -475,8 +475,8 @@ Your task is right there, scheduled and ready:
   stroke: 0.5pt + rgb("#e0e0e0"),
   inset: 10pt,
   [*Say this*], [*What happens*],
-  [`Show my goals`], [Lists all active goals],
-  [`Show high priority goals`], [Filters by priority],
+  [`Show my projects`], [Lists all active projects],
+  [`Show high priority projects`], [Filters by priority],
   [`What are my tasks?`], [Lists active tasks],
   [`What did I edit recently?`], [Shows recent files],
 )
@@ -506,7 +506,7 @@ Your task is right there, scheduled and ready:
   [*Say this*], [*What happens*],
   [`Start my morning`], [Runs full morning workflow],
   [`Review yesterday`], [Shows yesterday's summary],
-  [`Plan my day`], [Creates tasks based on goals],
+  [`Plan my day`], [Creates tasks based on projects],
 )
 
 #pagebreak()
@@ -551,7 +551,7 @@ The starter kit includes a morning routine skill that helps you start each day w
   row-gutter: 12pt,
   [#text(fill: accent, weight: "bold")[1.]], [*Reviews yesterday* — Reads your recent daily notes and summarizes what happened],
   [#text(fill: accent, weight: "bold")[2.]], [*Morning check-in* — Asks how you're feeling, your energy level, sleep quality],
-  [#text(fill: accent, weight: "bold")[3.]], [*Shows your goals* — Queries active goals so you remember what matters],
+  [#text(fill: accent, weight: "bold")[3.]], [*Shows your projects* — Queries active projects so you remember what matters],
   [#text(fill: accent, weight: "bold")[4.]], [*Plans the day* — Suggests tasks based on your energy and priorities],
 )
 

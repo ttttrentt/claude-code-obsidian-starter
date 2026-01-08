@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Build Side Project]]"
+status: open
+tags:
+  - task
+project: "[[Website Redesign]]"
 context: computer
-due: 2025-12-16
+due: 2026-01-15
 ---
 
 # Set up CI pipeline

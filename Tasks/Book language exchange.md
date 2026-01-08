@@ -1,8 +1,10 @@
 ---
-status: active
-project: "[[Learn Spanish]]"
+status: open
+tags:
+  - task
+project: "[[Learn Claude Code]]"
 context: phone
-due: 2025-12-15
+due: 2026-01-10
 ---
 
 # Book language exchange
