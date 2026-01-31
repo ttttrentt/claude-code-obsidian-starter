@@ -34,5 +34,3 @@
 ---
 
 Made with ❤️ for the Obsidian community
-
-By [Artem Zhutov](https://x.com/ArtemXTech)
